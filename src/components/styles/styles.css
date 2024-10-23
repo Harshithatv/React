@@ -1,0 +1,51 @@
+/* styles.css */
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.techno-heading {
+  display: flex;
+  justify-content: space-between;
+  font-size: 6rem; /* Increased size */
+  font-weight: bold; /* Make it bold */
+  color:linear-gradient(to right, green, blue); /* Customize color (changed to a golden tone) */
+  
+  font-family: 'Arial', sans-serif; /* Change font family */
+}
+
+.techno-left {
+  animation: slideInLeft 1s forwards; /* Left slide-in animation */
+}
+
+.techno-right {
+  animation: slideInRight 1s forwards; /* Right slide-in animation */
+}
+
+.animate {
+  animation: slideInLeft 1s forwards, slideInRight 1s forwards; /* Reapply animations */
+}

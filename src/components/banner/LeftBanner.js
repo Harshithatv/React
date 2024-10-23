@@ -1,90 +1,68 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaReact,
-  FaGithub,
-} from "react-icons/fa";
-import { SiTailwindcss, SiFigma, SiNextdotjs } from "react-icons/si";
+import "../styles/styles.css"
 
 const LeftBanner = () => {
   const [text] = useTypewriter({
-    words: ["Professional Coder.", "Full Stack Developer.", "UI Designer."],
+    words: ["Software Development.", "Branding.", "Digital Marketing.", "Internet Marketing"],
     loop: true,
     typeSpeed: 20,
     deleteSpeed: 10,
     delaySpeed: 2000,
   });
+
+  useEffect(() => {
+    const headingLeft = document.querySelector('.techno-left');
+    const headingRight = document.querySelector('.techno-right');
+
+    const animateHeadings = () => {
+      headingLeft.classList.remove('animate');
+      headingRight.classList.remove('animate');
+      // Trigger reflow to restart animation
+      void headingLeft.offsetWidth;
+      void headingRight.offsetWidth;
+      headingLeft.classList.add('animate');
+      headingRight.classList.add('animate');
+    };
+
+    // Start the animation when the component mounts
+    animateHeadings();
+
+    // Repeat the animation every few seconds
+    const interval = setInterval(animateHeadings, 5000); // Repeat every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="w-full lgl:w-1/2 flex flex-col gap-20">
+    <div className="w-full lgl:w-1/2 flex flex-col gap-10">
+      {/* Animated Techno IT Solutions Heading */}
+      <div className="techno-heading">
+        <span className="techno-left">Techno IT</span>
+        <span className="techno-right"></span>
+      </div>
+
       <div className="flex flex-col gap-5">
-        <h4 className=" text-lg font-normal">WELCOME TO MY WORLD</h4>
-        <h1 className="text-6xl font-bold text-white">
-          Hi, I'm <span className="text-designColor capitalize">John doe</span>
-        </h1>
-        <h2 className="text-4xl font-bold text-white">
-          a <span>{text}</span>
-          <Cursor
-            cursorBlinking="false"
-            cursorStyle="|"
-            cursorColor="#ff014f"
-          />
+        <h3 className="text-lg font-normal">Delivering Superior Services in</h3>
+
+        <h2 className="text-4xl font-bold text-yellow-500">
+          <span>{text}</span>
+          <Cursor cursorBlinking="false" cursorStyle="|" cursorColor="#ff014f" />
         </h2>
+
         <p className="text-base font-bodyFont leading-6 tracking-wide">
-          I use animation as a third dimension by which to simplify experiences
-          and kuiding thro each and every interaction. I'm not adding motion
-          just to spruce things up, but doing it in ways that.
+          We provide top-quality services in Software Development, SEO, and Digital Marketing. Whether you need custom software, better search engine rankings, or effective online marketing, we have the right solutions for your business.
         </p>
       </div>
-      <div className="flex flex-col xl:flex-row gap-6 lgl:gap-0 justify-between">
-        <div>
-          <h2 className="text-base uppercase font-titleFont mb-4">
-            Find me in
-          </h2>
-          <div className="flex gap-4">
-            <a href="https://github.com/noorjsdivs/portfolioone" target="blank">
-              <span className="bannerIcon">
-                <FaGithub />
-              </span>
-            </a>
-            <a href="https://github.com/noorjsdivs/portfolioone" target="blank">
-              <span className="bannerIcon">
-                <FaFacebookF />
-              </span>
-            </a>
-            <a href="https://github.com/noorjsdivs/portfolioone" target="blank">
-              <span className="bannerIcon">
-                <FaTwitter />
-              </span>
-            </a>
-            <a href="https://github.com/noorjsdivs/portfolioone" target="blank">
-              <span className="bannerIcon">
-                <FaLinkedinIn />
-              </span>
-            </a>
-          </div>
-        </div>
-        <div>
-          <h2 className="text-base uppercase font-titleFont mb-4">
-            BEST SKILL ON
-          </h2>
-          <div className="flex gap-4">
-            <span className="bannerIcon">
-              <FaReact />
-            </span>
-            <span className="bannerIcon">
-              <SiNextdotjs />
-            </span>
-            <span className="bannerIcon">
-              <SiTailwindcss />
-            </span>
-            <span className="bannerIcon">
-              <SiFigma />
-            </span>
-          </div>
-        </div>
+
+      {/* Buttons Section */}
+      <div className="flex gap-4">
+        <button className="px-6 py-2 rounded-full text-white font-semibold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 hover:from-pink-500 hover:to-yellow-500 transition duration-300">
+          Get Quotes
+        </button>
+        <button className="px-6 py-2 rounded-full text-white font-semibold bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 hover:from-indigo-500 hover:to-blue-500 transition duration-300">
+          Get Started
+        </button>
       </div>
     </div>
   );

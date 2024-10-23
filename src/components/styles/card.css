@@ -1,0 +1,18 @@
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.9); /* Start slightly smaller */
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1); /* Normal size */
+    }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards; /* Smooth fade in */
+  }
+  .transition-transform {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  

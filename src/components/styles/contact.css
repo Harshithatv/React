@@ -1,0 +1,29 @@
+.contactInput, .contactTextArea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .contactInput:focus, .contactTextArea:focus {
+    border-color: #00ff99;
+    box-shadow: 0 0 8px rgba(0, 255, 153, 0.5);
+  }
+  
+ 
+  
+  .bg-neon {
+    background-color:aliceblue;
+  }
+  
+  button {
+    transition: background-color 0.5s ease;
+  }
+  
+  
+  
+  .shadow-lg {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  

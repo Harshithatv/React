@@ -1,0 +1,37 @@
+/* Add this to your footer.css */
+
+footer {
+    background: linear-gradient(90deg, #2d3748, #1a202c, #000000); /* Gradient from dark gray to black */
+   
+      
+}
+  
+  h2, h3 {
+    color: #ffffff; /* White color for headings */
+  }
+  
+  p, a {
+    color: #d1d5db; /* Light gray for text */
+  }
+  
+  /* Animation for fade-in effect */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-in-out;
+  }
+  
+  /* Hover effects for links and buttons */
+  a:hover, button:hover {
+    transform: scale(1.05); /* Slightly scale up on hover */
+  }
+  

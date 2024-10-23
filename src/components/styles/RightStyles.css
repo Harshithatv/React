@@ -1,0 +1,17 @@
+.animated-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8; /* Slightly transparent */
+    animation: moveDiagonally 12s linear infinite; /* Slow diagonal movement */
+  }
+  
+  /* Animation to move circles from top right to bottom left */
+  @keyframes moveDiagonally {
+    0% {
+      transform: translate(100vw, -100vh); /* Start from the top right */
+    }
+    100% {
+      transform: translate(-100vw, 100vh); /* Move to the bottom left */
+    }
+  }
+  

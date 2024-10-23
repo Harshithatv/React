@@ -1,92 +1,70 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react';
 import Slider from "react-slick";
 import { RiStarFill } from "react-icons/ri";
-import { HiArrowRight, HiArrowLeft } from "react-icons/hi";
-import Title from '../layouts/Title'
-import { testimonialOne,testimonialTwo, quote } from "../../assets";
+import Title from '../layouts/Title';
 
-
-function SampleNextArrow(props) {
-  const { onClick } = props;
-  return (
-    <div
-      className="w-14 h-12 bg-[#0c1821] hover:bg-black duration-300 rounded-md text-2xl text-gray-400 flex justify-center items-center absolute top-0 right-0 shadow-shadowOne cursor-pointer z-10"
-      onClick={onClick}
-    >
-      <HiArrowRight />
-    </div>
-  );
-}
-
-function SamplePrevArrow(props) {
-  const { onClick } = props;
-  return (
-    <div
-      className="w-14 h-12 bg-[#0c1821] hover:bg-black duration-300 rounded-md text-2xl text-gray-400 flex justify-center items-center absolute top-0 right-20 shadow-shadowOne cursor-pointer z-10"
-      onClick={onClick}
-    >
-      <HiArrowLeft />
-    </div>
-  );
-}
+import testimonial1 from "../../assets/images/testmonial/testimonial1.jpg";
+import testimonial2 from "../../assets/images/testmonial/testimonial2.jpeg";
+import testimonial3 from "../../assets/images/testmonial/testimonial3.jpeg";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Testimonial = () => {
-      const [dotActive, setDocActive] = useState(0);
-     const settings = {
-       dots: true,
-       infinite: true,
-       speed: 500,
-       slidesToShow: 1,
-       slidesToScroll: 1,
-       nextArrow:<SampleNextArrow />,
-       prevArrow:<SamplePrevArrow />,
-       beforeChange: (prev, next) => {
-         setDocActive(next);
-       },
-       appendDots: (dots) => (
-         <div
-           style={{
-             borderRadius: "10px",
-             padding: "10px",
-           }}
-         >
-           <ul
-             style={{
-               display: "flex",
-               gap: "15px",
-               justifyContent: "center",
-               marginTop: "20px",
-             }}
-           >
-             {" "}
-             {dots}{" "}
-           </ul>
-         </div>
-       ),
-       customPaging: (i) => (
-         <div
-           style={
-             i === dotActive
-               ? {
-                   width: "12px",
-                   height: "12px",
-                   color: "blue",
-                   background: "#ff014f",
-                   borderRadius: "50%",
-                   cursor: "pointer",
-                 }
-               : {
-                   width: "12px",
-                   height: "12px",
-                   color: "blue",
-                   background: "gray",
-                   borderRadius: "50%",
-                   cursor: "pointer",
-                 }
-           }
-         ></div>
-       ),
-     };
+  const [dotActive, setDocActive] = useState(0);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    beforeChange: (prev, next) => {
+      setDocActive(next);
+    },
+    appendDots: (dots) => (
+      <div
+        style={{
+          borderRadius: "10px",
+          padding: "0px",
+        }}
+      >
+        <ul
+          style={{
+            display: "flex",
+            gap: "15px",
+            justifyContent: "center",
+            marginTop: "40px", // Increased margin-top for the dots
+          }}
+        >
+          {dots}
+        </ul>
+      </div>
+    ),
+    customPaging: (i) => (
+      <div
+        style={
+          i === dotActive
+            ? {
+                width: "12px",
+                height: "12px",
+                background: "#ff014f",
+                borderRadius: "50%",
+                cursor: "pointer",
+              }
+            : {
+                width: "12px",
+                height: "12px",
+                background: "gray",
+                borderRadius: "50%",
+                cursor: "pointer",
+              }
+        }
+      ></div>
+    ),
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
+
   return (
     <section
       id="testimonial"
@@ -96,163 +74,85 @@ const Testimonial = () => {
         <Title title="WHAT CLIENTS SAY" des="Testimonial" />
       </div>
       <div className="max-w-6xl mx-auto">
-        {/* ================ Slider One ================== */}
         <Slider {...settings}>
+          {/* Testimonial One */}
           <div className="w-full">
-            <div className="w-full h-auto flex flex-col lgl:flex-row justify-between">
-              <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[#1e2024] to-[#23272b] p-8 rounded-lg shadow-shadowOne flex flex-col md:flex-row lgl:flex-col gap-8 justify-center md:justify-start lgl:justify-center">
-                <img
-                  className="h-72 md:h-32 lgl:h-72 rounded-lg object-cover"
-                  src={testimonialOne}
-                  alt="testimonialOne"
-                />
-                <div className="w-full flex flex-col justify-end">
-                  <p className="text-xs uppercase text-designColor tracking-wide mb-2">
-                    Bound - Trolola
-                  </p>
-                  <h3 className="text-2xl font-bold">Jone Duone Joe</h3>
-                  <p className="text-base tracking-wide text-gray-500">
-                    Operation Officer
-                  </p>
-                </div>
+            <div className="w-full h-auto flex flex-col justify-center items-center bg-gradient-to-r from-[#1e2024] to-[#23272b] p-8 rounded-lg shadow-shadowOne">
+              <img
+                className="h-24 w-24 rounded-full object-cover mb-4"
+                src={testimonial1}
+                alt="testimonialOne"
+              />
+              <h3 className="text-xl font-bold text-white">John Doe</h3>
+              <p className="text-sm text-gray-400">CEO, Example Corp.</p>
+              <div className="text-yellow-500 flex gap-1 my-2">
+                <RiStarFill />
+                <RiStarFill />
+                <RiStarFill />
+                <RiStarFill />
+                <RiStarFill />
               </div>
-              <div className="w-full lgl:w-[60%] h-full flex flex-col justify-between">
-                <img className="w-20 lgl:w-32" src={quote} alt="quote" />
-                <div className="w-full h-[70%] py-10 bg-gradient-to-r from-[#1e2024] to-[#23272b] rounded-lg shadow-shadowOne p-4 lgl:p-8 flex flex-col justify-center gap-4 lgl:gap-8">
-                  <div className="flex flex-col justify-between lgl:items-center py-6 border-b-2 border-b-gray-900">
-                    <div>
-                      <h3 className="text-xl lgl:text-2xl font-medium tracking-wide">
-                        Travel Mobile App Design.
-                      </h3>
-                      <p className="text-base text-gray-400 mt-3">
-                        via Upwork - Mar 4, 2015 - Aug 30, 2021 test
-                      </p>
-                    </div>
-                    <div className="text-yellow-500 flex gap-1">
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                    </div>
-                  </div>
-                  <p className="text-base font-titleFont text-gray-400 font-medium tracking-wide leading-6">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                    dolorum, eos natus ipsum numquam veniam officia
-                    necessitatibus ratione quos debitis exercitationem
-                    repudiandae facilis id neque nihil accusantium perspiciatis
-                    repellat? Iste.
-                  </p>
-                </div>
-              </div>
+              <p className="text-base text-gray-400 text-center">
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Pellentesque efficitur nisl et enim malesuada, sit amet
+                volutpat velit viverra."
+              </p>
             </div>
           </div>
-          {/* ================ Slider Two ================== */}
 
+          {/* Testimonial Two */}
           <div className="w-full">
-            <div className="w-full h-auto flex flex-col lgl:flex-row justify-between">
-              <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[#1e2024] to-[#23272b] p-8 rounded-lg shadow-shadowOne flex flex-col md:flex-row lgl:flex-col gap-8 justify-center md:justify-start lgl:justify-center">
-                <img
-                  className="h-72 md:h-32 lgl:h-72 rounded-lg object-cover"
-                  src={testimonialTwo}
-                  alt="testimonialTwo"
-                />
-                <div className="w-full flex flex-col justify-end">
-                  <p className="text-xs uppercase text-designColor tracking-wide mb-2">
-                    Bound - Trolola
-                  </p>
-                  <h3 className="text-2xl font-bold">Jone Duone Joe</h3>
-                  <p className="text-base tracking-wide text-gray-500">
-                    Operation Officer
-                  </p>
-                </div>
+            <div className="w-full h-auto flex flex-col justify-center items-center bg-gradient-to-r from-[#1e2024] to-[#23272b] p-8 rounded-lg shadow-shadowOne">
+              <img
+                className="h-24 w-24 rounded-full object-cover mb-4"
+                src={testimonial2}
+                alt="testimonialTwo"
+              />
+              <h3 className="text-xl font-bold text-white">Jane Smith</h3>
+              <p className="text-sm text-gray-400">Designer, Creative Co.</p>
+              <div className="text-yellow-500 flex gap-1 my-2">
+                <RiStarFill />
+                <RiStarFill />
+                <RiStarFill />
+                <RiStarFill />
+                <RiStarFill />
               </div>
-              <div className="w-full lgl:w-[60%] h-full flex flex-col justify-between">
-                <img className="w-20 lgl:w-32" src={quote} alt="quote" />
-                <div className="w-full h-[70%] py-10 bg-gradient-to-r from-[#1e2024] to-[#23272b] rounded-lg shadow-shadowOne p-4 lgl:p-8 flex flex-col justify-center gap-4 lgl:gap-8">
-                  <div className="flex flex-col justify-between lgl:items-center py-6 border-b-2 border-b-gray-900">
-                    <div>
-                      <h3 className="text-xl lgl:text-2xl font-medium tracking-wide">
-                        Travel Mobile App Design.
-                      </h3>
-                      <p className="text-base text-gray-400 mt-3">
-                        via Upwork - Mar 4, 2015 - Aug 30, 2021 test
-                      </p>
-                    </div>
-                    <div className="text-yellow-500 flex gap-1">
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                    </div>
-                  </div>
-                  <p className="text-base font-titleFont text-gray-400 font-medium tracking-wide leading-6">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                    dolorum, eos natus ipsum numquam veniam officia
-                    necessitatibus ratione quos debitis exercitationem
-                    repudiandae facilis id neque nihil accusantium perspiciatis
-                    repellat? Iste.
-                  </p>
-                </div>
-              </div>
+              <p className="text-base text-gray-400 text-center">
+                "Phasellus euismod risus ac velit cursus, at vehicula elit
+                facilisis. Nullam nec mauris tincidunt, elementum arcu id,
+                imperdiet lectus."
+              </p>
             </div>
           </div>
-          {/* ================ Slider Three ================== */}
 
+          {/* Testimonial Three */}
           <div className="w-full">
-            <div className="w-full h-auto flex flex-col lgl:flex-row justify-between">
-              <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[#1e2024] to-[#23272b] p-8 rounded-lg shadow-shadowOne flex flex-col md:flex-row lgl:flex-col gap-8 justify-center md:justify-start lgl:justify-center">
-                <img
-                  className="h-72 md:h-32 lgl:h-72 rounded-lg object-cover"
-                  src={testimonialOne}
-                  alt="testimonialOne"
-                />
-                <div className="w-full flex flex-col justify-end">
-                  <p className="text-xs uppercase text-designColor tracking-wide mb-2">
-                    Bound - Trolola
-                  </p>
-                  <h3 className="text-2xl font-bold">Jone Duone Joe</h3>
-                  <p className="text-base tracking-wide text-gray-500">
-                    Operation Officer
-                  </p>
-                </div>
+            <div className="w-full h-auto flex flex-col justify-center items-center bg-gradient-to-r from-[#1e2024] to-[#23272b] p-8 rounded-lg shadow-shadowOne">
+              <img
+                className="h-24 w-24 rounded-full object-cover mb-4"
+                src={testimonial3}
+                alt="testimonialThree"
+              />
+              <h3 className="text-xl font-bold text-white">Sam Wilson</h3>
+              <p className="text-sm text-gray-400">CTO, Tech Solutions</p>
+              <div className="text-yellow-500 flex gap-1 my-2">
+                <RiStarFill />
+                <RiStarFill />
+                <RiStarFill />
+                <RiStarFill />
+                <RiStarFill />
               </div>
-              <div className="w-full lgl:w-[60%] h-full flex flex-col justify-between">
-                <img className="w-20 lgl:w-32" src={quote} alt="quote" />
-                <div className="w-full h-[70%] py-10 bg-gradient-to-r from-[#1e2024] to-[#23272b] rounded-lg shadow-shadowOne p-4 lgl:p-8 flex flex-col justify-center gap-4 lgl:gap-8">
-                  <div className="flex flex-col justify-between lgl:items-center py-6 border-b-2 border-b-gray-900">
-                    <div>
-                      <h3 className="text-xl lgl:text-2xl font-medium tracking-wide">
-                        Travel Mobile App Design.
-                      </h3>
-                      <p className="text-base text-gray-400 mt-3">
-                        via Upwork - Mar 4, 2015 - Aug 30, 2021 test
-                      </p>
-                    </div>
-                    <div className="text-yellow-500 flex gap-1">
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                    </div>
-                  </div>
-                  <p className="text-base font-titleFont text-gray-400 font-medium tracking-wide leading-6">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                    dolorum, eos natus ipsum numquam veniam officia
-                    necessitatibus ratione quos debitis exercitationem
-                    repudiandae facilis id neque nihil accusantium perspiciatis
-                    repellat? Iste.
-                  </p>
-                </div>
-              </div>
+              <p className="text-base text-gray-400 text-center">
+                "Vestibulum ultricies purus quis felis imperdiet, in auctor
+                felis accumsan. Maecenas lobortis turpis nec ipsum fermentum,
+                at tincidunt tortor efficitur."
+              </p>
             </div>
           </div>
         </Slider>
       </div>
     </section>
   );
-}
+};
 
-export default Testimonial
+export default Testimonial;
